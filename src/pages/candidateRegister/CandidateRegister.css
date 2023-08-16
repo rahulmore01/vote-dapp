@@ -1,11 +1,11 @@
 .reg-cand-wrapper {
   width: 100%;
-  height: 90vh;
+  height: 84vh;
   background-color: var(--color-bg);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 100px;
+  padding-top: 160px !important;
 }
 
 .reg-img-wrapper {
@@ -94,6 +94,7 @@
   .reg-cand-wrapper {
     flex-direction: column;
     height: auto;
+    padding-top: 100px !important;
   }
   .reg-img-wrapper {
     height: 280px;

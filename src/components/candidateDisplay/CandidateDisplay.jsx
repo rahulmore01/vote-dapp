@@ -11,6 +11,9 @@ const CandidateDisplay = () => {
     };
     contract && candidateInfo();
   }, [contract]);
+  if (candidates.length === 0) {
+    return null;
+  }
   return (
     <div className="table-container">
       <table className="voter-table">
@@ -22,13 +25,17 @@ const CandidateDisplay = () => {
           </tr>
         </thead>
         <tbody>
-          {candidates.map((candidate) => (
-            <tr key={candidate.party}>
-              <td>{candidate.name}</td>
-              <td>{candidate.party}</td>
-              <td>{candidate.votes}</td>
-            </tr>
-          ))}
+          {candidates.length > 0 ? (
+            candidates.map((candidate) => (
+              <tr key={candidate.party}>
+                <td>{candidate.name}</td>
+                <td>{candidate.party}</td>
+                <td>{candidate.votes}</td>
+              </tr>
+            ))
+          ) : (
+            <p></p>
+          )}
         </tbody>
       </table>
     </div>

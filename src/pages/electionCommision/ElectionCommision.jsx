@@ -8,23 +8,36 @@ import { toast } from "react-hot-toast";
 const ElectionCommision = ({ account }) => {
   const [winner, setWinner] = useState("No Winner Yet");
   const { contract } = useContext(WalletContext);
+
+  const dateToSeconds = (dateTimeString) => {
+    const date = new Date(dateTimeString);
+    console.log("date", Math.floor(date.getTime() / 1000));
+    return Math.floor(date.getTime() / 1000);
+  };
+
   const votingTime = async (event) => {
     event.preventDefault();
     const startTime = document.querySelector("#start").value;
     const endTime = document.querySelector("#end").value;
+
+    // converting time and date in seconds
+    const startInSeconds = dateToSeconds(startTime);
+    const endInSeconds = dateToSeconds(endTime);
+
     try {
       await contract.methods
-        .voteTime(startTime, endTime)
+        .voteTime(startInSeconds, endInSeconds)
         .send({ from: account, gas: 480000 });
+
       toast.success("Voting Started");
     } catch (error) {
       console.error(error);
     }
   };
+
   const emergency = async () => {
     try {
       await contract.methods.emergency().send({ from: account, gas: 480000 });
-      // alert("Emergency Declared");
       toast("Emergency Declared", {
         icon: "🚨",
       });
@@ -32,17 +45,18 @@ const ElectionCommision = ({ account }) => {
       console.error(error);
     }
   };
+
   const result = async () => {
     try {
       await contract.methods.result().send({ from: account, gas: 480000 });
       const winCandidate = await contract.methods.winner().call();
       setWinner(winCandidate);
       toast.success("Result Out");
-      // alert("Result Out");
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <>
       <div>
@@ -54,10 +68,10 @@ const ElectionCommision = ({ account }) => {
           </h2>
           <form className="election-form" onSubmit={votingTime}>
             <label htmlFor="start">Start Time</label>
-            <input type="text" id="start"></input>
+            <input type="datetime-local" id="start" required />
 
             <label htmlFor="end">End Time</label>
-            <input type="text" id="end"></input>
+            <input type="datetime-local" id="end" required />
 
             <button className="regBtn" type="submit">
               Voting Start
@@ -76,7 +90,9 @@ const ElectionCommision = ({ account }) => {
     </>
   );
 };
+
 ElectionCommision.propTypes = {
   account: PropTypes.node.isRequired,
 };
+
 export default ElectionCommision;
