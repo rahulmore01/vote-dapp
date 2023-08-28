@@ -40,24 +40,8 @@
   border-color: var(--color-blue);
   border-radius: 8px;
 }
-.chooseBtn {
-  width: 120px;
-  height: 40px;
-  background-color: var(--color-blue);
-  border-radius: 8px;
-  cursor: not-allowed;
-  border-style: none;
-  color: white;
-}
 
-.btn-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 6px;
-}
-.btn-para {
+.note {
   color: rgb(236, 102, 102);
   font-size: 10px;
   font-weight: 400;

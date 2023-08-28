@@ -56,12 +56,9 @@ const AccountList = ({ saveAccount }) => {
             </option>
           </select>
         </form>
-        <div className="btn-wrapper">
-          <button className="chooseBtn">Choose</button>
-          <p className="btn-para">
-            *Go to Menu: Register for New candidate & Voter for a standin person
-          </p>
-        </div>
+        <p className="note">
+          *Go to Menu: Register for New candidate & Voter for a standin person
+        </p>
       </div>
     </div>
   );
