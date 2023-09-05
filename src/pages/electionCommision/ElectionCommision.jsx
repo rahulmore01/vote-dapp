@@ -31,7 +31,7 @@ const ElectionCommision = ({ account }) => {
 
       toast.success("Voting Started");
     } catch (error) {
-      console.error(error);
+      toast.error("Voting Initilization Failed");
     }
   };
 
@@ -42,7 +42,7 @@ const ElectionCommision = ({ account }) => {
         icon: "🚨",
       });
     } catch (error) {
-      console.error(error);
+      toast.error("Emergency Declaration Failed");
     }
   };
 
@@ -53,7 +53,7 @@ const ElectionCommision = ({ account }) => {
       setWinner(winCandidate);
       toast.success("Result Out");
     } catch (error) {
-      console.error(error);
+      toast.error("Result Declaration Failed");
     }
   };
 

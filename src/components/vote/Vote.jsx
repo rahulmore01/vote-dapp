@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import "./Vote.css";
+import { toast } from "react-hot-toast";
 
 import { WalletContext } from "../Wallet";
 const Vote = ({ account }) => {
@@ -13,9 +14,9 @@ const Vote = ({ account }) => {
       await contract.methods
         .vote(voterId, candidateId)
         .send({ from: account, gas: 480000 });
-      alert("You have voted successfully");
+      toast.success("You have voted successfully");
     } catch (error) {
-      console.error(error);
+      toast.error("Vote Failed");
     }
   };
   return (

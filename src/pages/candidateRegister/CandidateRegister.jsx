@@ -4,6 +4,7 @@ import CandidateDisplay from "../../components/candidateDisplay/CandidateDisplay
 import Navigation from "../../components/navigation/Navigation";
 import { WalletContext } from "../../components/Wallet";
 import "./CandidateRegister.css";
+import { toast } from "react-hot-toast";
 
 const CandidateRegister = ({ account }) => {
   const { contract } = useContext(WalletContext);
@@ -19,7 +20,7 @@ const CandidateRegister = ({ account }) => {
         .send({ from: account, gas: 480000 });
       toast.success("Registration successful");
     } catch (error) {
-      console.error(error);
+      toast.error("Registration Failed");
     }
   };
   return (

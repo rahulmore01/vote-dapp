@@ -21,7 +21,7 @@ const VoterRegister = ({ account }) => {
         .send({ from: account, gas: 480000 });
       toast.success("Voter Registration sucessfull");
     } catch (error) {
-      console.error(error);
+      toast.error("Voter Already Registered");
     }
   };
   return (

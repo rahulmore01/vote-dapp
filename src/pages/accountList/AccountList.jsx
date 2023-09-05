@@ -50,8 +50,9 @@ const AccountList = ({ saveAccount }) => {
             className="innerBox"
             id="selectNumber"
             onChange={selectAccount}
+            defaultValue=""
           >
-            <option disabled selected value="">
+            <option disabled value="">
               Choose an account
             </option>
           </select>
@@ -64,6 +65,7 @@ const AccountList = ({ saveAccount }) => {
   );
 };
 AccountList.propTypes = {
-  saveAccount: PropTypes.node.isRequired,
+  saveAccount: PropTypes.func.isRequired, // Change PropTypes.node to PropTypes.func
 };
+
 export default AccountList;
