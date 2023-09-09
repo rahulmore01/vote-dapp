@@ -3,8 +3,9 @@
   position: fixed;
   height: 30px;
   width: 100%;
-  background-color: var(--color-blue-dark);
-  color: white;
+  background-color: rgb(237, 241, 242);
+  /* background-color: var(--color-blue-dark); */
+  color: var(--color-blue-dark);
   padding-top: 100px;
   padding-bottom: 20px;
   display: flex;
